@@ -3,6 +3,7 @@ import { beforeEach, describe, it, expect, beforeAll } from "vitest";
 import { CoinsManager } from "../src/managers/CoinsManager.js";
 import { GeckoRequestManager } from "../src/managers/GeckoRequestManager.js";
 import { env } from "./env.js";
+import { mockDataPath } from "./mockDataPath.js";
 
 let requestManager: GeckoRequestManager;
 let coinsManager: CoinsManager;
@@ -12,24 +13,24 @@ describe("CoinsManager", () => {
     if (env.MOCK_API_CALLS) {
       const scope = nock("https://api.coingecko.com/api/v3")
         .get(/\/coins\/list/i)
-        .replyWithFile(200, __dirname + "/mockData/coins.json", {
+        .replyWithFile(200, mockDataPath("coins.json"), {
           "Content-Type": "application/json",
         })
         .get(/\/coins\/markets/i)
-        .replyWithFile(200, __dirname + "/mockData/market_coins.json", {
+        .replyWithFile(200, mockDataPath("market_coins.json"), {
           "Content-Type": "application/json",
         })
         .get(/\/coins\/bitcoin\/tickers/i)
-        .replyWithFile(200, __dirname + "/mockData/tickers.json", {
+        .replyWithFile(200, mockDataPath("tickers.json"), {
           "Content-Type": "application/json",
         })
         .get(/\/coins\/bitcoin\/market_chart/i)
-        .replyWithFile(200, __dirname + "/mockData/chart_bitcoin.json");
+        .replyWithFile(200, mockDataPath("chart_bitcoin.json"));
 
       for (const coinId of coinsId) {
         scope
           .get(new RegExp("/coins/COIN_HERE".replace("COIN_HERE", coinId), "i"))
-          .replyWithFile(200, __dirname + `/mockData/coin_${coinId}.json`, {
+          .replyWithFile(200, mockDataPath(`coin_${coinId}.json`), {
             "Content-Type": "application/json",
           });
       }

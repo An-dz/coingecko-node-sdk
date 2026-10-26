@@ -1,3 +1,4 @@
+import { z } from "zod";
 import {
   MarketChartSnapshot,
   MarketChartSnapshots,
@@ -9,7 +10,7 @@ export class MarketChartMapper {
     market_caps,
     prices,
     total_volumes,
-  }: typeof marketChartSchema._type) {
+  }: z.infer<typeof marketChartSchema>) {
     return new MarketChartSnapshots({
       marketCapSnapshots: market_caps.map(this.#snapshotMapper),
       priceSnapshots: prices.map(this.#snapshotMapper),

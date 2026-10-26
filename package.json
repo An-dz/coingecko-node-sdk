@@ -1,6 +1,6 @@
 {
   "name": "coingecko-node-sdk",
-  "version": "1.7.0",
+  "version": "1.9.1",
   "description": "Simple SDK for CoinGecko's API",
   "type": "module",
   "scripts": {
@@ -25,18 +25,18 @@
     "url": "https://github.com/thallesp/coingecko-node-sdk"
   },
   "devDependencies": {
-    "@types/big.js": "^6.2.2",
-    "@types/json-bigint": "^1.0.1",
-    "dotenv": "^16.0.3",
-    "nock": "^13.3.1",
-    "node-fetch": "^3.3.1",
-    "tsup": "^6.7.0",
-    "typescript": "^5.0.2",
-    "vitest": "^0.30.1"
+    "@types/big.js": "^7.0.0",
+    "@types/json-bigint": "^1.0.4",
+    "dotenv": "^18.0.9",
+    "nock": "^15.0.5",
+    "node-fetch": "^3.3.2",
+    "tsup": "^9.0.0",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.5"
   },
   "dependencies": {
-    "big.js": "^6.2.1",
-    "lossless-json": "^2.0.8",
-    "zod": "^3.23.8"
+    "big.js": "^7.0.1",
+    "lossless-json": "^4.3.3",
+    "zod": "^4.6.7"
   }
 }
