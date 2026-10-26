@@ -5,7 +5,7 @@ export const coinsSchema = z.array(
 		id: z.string(),
 		symbol: z.string(),
 		name: z.string(),
-		platforms: z.record(z.string().nullable()).optional(),
+		platforms: z.record(z.string(), z.string().nullable()).optional(),
 	}),
 );
 

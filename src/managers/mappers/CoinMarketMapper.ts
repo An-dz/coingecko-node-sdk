@@ -1,8 +1,9 @@
+import { z } from "zod";
 import { CoinMarket } from "../../index.js";
 import { coinMarketSchema } from "../validators/CoinsManager.validator.js";
 
 export class CoinMarketMapper {
-  static toCoinMarket(props: typeof coinMarketSchema._type): CoinMarket {
+  static toCoinMarket(props: z.infer<typeof coinMarketSchema>): CoinMarket {
     const {
       sparkline_in_7d,
       price_change_percentage_24h_in_currency,

@@ -1,3 +1,4 @@
+import { z } from "zod";
 import { CoinNotFoundError } from "../errors/CoinNotFoundError.js";
 import { HttpError } from "../errors/HttpError.js";
 import { Coin } from "../structures/Coin.js";
@@ -106,7 +107,7 @@ export class CoinsManager {
 		if (!response.ok)
 			throw new HttpError(response.status, await response.text());
 
-		const data = await parseSchemaFromResponse<typeof tokenPriceSchema._type>(
+		const data = await parseSchemaFromResponse<z.infer<typeof tokenPriceSchema>>(
 			tokenPriceSchema,
 			response,
 		);
@@ -162,7 +163,7 @@ export class CoinsManager {
 		if (!response.ok)
 			throw new HttpError(response.status, await response.text());
 
-		const data = await parseSchemaFromResponse<typeof coinsSchema._type>(
+		const data = await parseSchemaFromResponse<z.infer<typeof coinsSchema>>(
 			coinsSchema,
 			response,
 		);
@@ -201,7 +202,7 @@ export class CoinsManager {
 		if (!response.ok)
 			throw new HttpError(response.status, await response.text());
 
-		const data = await parseSchemaFromResponse<typeof coinMarketsSchema._type>(
+		const data = await parseSchemaFromResponse<z.infer<typeof coinMarketsSchema>>(
 			coinMarketsSchema,
 			response,
 		);
@@ -232,7 +233,7 @@ export class CoinsManager {
 		if (!response.ok)
 			throw new HttpError(response.status, await response.text());
 
-		const data = await parseSchemaFromResponse<typeof tickersSchema._type>(
+		const data = await parseSchemaFromResponse<z.infer<typeof tickersSchema>>(
 			tickersSchema,
 			response,
 		);
@@ -262,7 +263,7 @@ export class CoinsManager {
 		if (!response.ok)
 			throw new HttpError(response.status, await response.text());
 
-		const data = await parseSchemaFromResponse<typeof marketChartSchema._type>(
+		const data = await parseSchemaFromResponse<z.infer<typeof marketChartSchema>>(
 			marketChartSchema,
 			response,
 		);

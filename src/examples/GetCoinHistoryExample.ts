@@ -1,4 +1,9 @@
 import { GeckoClient } from "./../clients/GeckoClient.js";
+
+declare const process: {
+	env: Record<string, string | undefined>;
+};
+
 (async () => {
 	const client = new GeckoClient({
 		baseURL: "https://pro-api.coingecko.com/api/v3/",

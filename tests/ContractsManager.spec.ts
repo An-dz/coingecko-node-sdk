@@ -2,6 +2,7 @@ import { beforeEach, describe, it, expect, beforeAll } from "vitest";
 import { ContractsManager } from "../src/managers/ContractsManager.js";
 import { GeckoRequestManager } from "../src/managers/GeckoRequestManager.js";
 import { env } from "./env.js";
+import { mockDataPath } from "./mockDataPath.js";
 import nock from "nock";
 
 let requestManager: GeckoRequestManager;
@@ -14,7 +15,7 @@ describe("ContractsManager", async () => {
       .get(
         "/coins/polygon-pos/contract/0x9C9e5fD8bbc25984B178FdCE6117Defa39d2db39"
       )
-      .replyWithFile(200, __dirname + "/mockData/coin_binance_contract.json");
+      .replyWithFile(200, mockDataPath("coin_binance_contract.json"));
   });
 
   beforeEach(() => {
